@@ -79,10 +79,15 @@
                 transform: translateY(-6px);
                 box-shadow: 0 12px 32px rgba(15,23,42,0.08);
             }
+            .project-thumb{ width:100%; height:auto; border-radius:8px; object-fit:cover; display:block; }
+
             .tech-list{ list-style:none; padding:0; margin:0 0 .75rem 0; display:flex; gap:.5rem; flex-wrap:wrap; }
             .tech-list li{ background:#eef5ff; color:var(--brand); padding:.25rem .5rem; border-radius:8px; font-size:.8125rem; }
 
             /* Skills */
+            .skills-row{ display:flex; gap:.5rem; flex-wrap:wrap; align-items:center; justify-content:center; }
+            .skill-pill{ display:inline-block; padding:.35rem .6rem; border-radius:999px; background:#f1f5f9; color:#0b5ed7; font-size:.875rem; }
+
             .skills-grid{ display:grid; gap:1rem; grid-template-columns: repeat(2,1fr); }
             @media(min-width:768px){ .skills-grid{ grid-template-columns: repeat(4,1fr); } }
             .skill-category{ background:#fff; border-radius:10px; padding:1rem; box-shadow: 0 6px 18px rgba(15,23,42,0.04); }
@@ -104,228 +109,236 @@
     <body class="d-flex flex-column h-100">
         <main class="flex-shrink-0" id="main" tabindex="-1">
             <!-- Top navigation -->
-            <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm" aria-label="Primary navigation">
-                <div class="container px-5">
-                    <a class="navbar-brand d-flex align-items-center" href="index.html">
-                        <img src="https://dummyimage.com/48x48/0d6efd/ffffff&text=C" alt="Chirag Dodiya logo" width="40" height="40" class="me-2 rounded-circle" />
-                        <span class="fw-bold">Chirag Dodiya</span>
-                        <small class="text-muted ms-2">Sr. Software Eng.</small>
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#siteNav" aria-controls="siteNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="siteNav">
-                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
-                            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-
-            <!-- Hero -->
-            <header class="site-hero" role="banner" aria-labelledby="hero-heading">
-                <div class="container px-5">
-                    <div class="hero-inner">
-                        <div>
-                            <p class="text-muted mb-2 hero-role">Senior Software Engineer</p>
-                            <h1 id="hero-heading" class="hero-title">Chirag Dodiya</h1>
-                            <p class="hero-tagline">I design and build reliable, scalable web applications and cloud infrastructure.<br class="d-none d-md-block" /> Specializing in full-stack engineering, distributed systems, and automation.</p>
-                            <div class="hero-ctas d-flex flex-wrap gap-2">
-                                <a class="btn btn-primary btn-lg" href="#portfolio">View Work</a>
-                                <a class="btn btn-outline-primary btn-lg" href="#contact">Contact</a>
-                                <a class="btn btn-link align-self-center ms-2" href="assets/Chirag_Dodiya_Resume.pdf" target="_blank" rel="noopener">Resume <i class="bi bi-box-arrow-up-right"></i></a>
-                            </div>
+            <header role="banner" class="mb-0">
+                <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm" aria-label="Primary navigation">
+                    <div class="container px-5">
+                        <a class="navbar-brand d-flex align-items-center" href="index.html">
+                            <img src="https://dummyimage.com/48x48/0d6efd/ffffff&text=C" alt="Chirag Dodiya logo" width="40" height="40" class="me-2 rounded-circle" />
+                            <span class="fw-bold">Chirag Dodiya</span>
+                            <small class="text-muted ms-2">Sr. Software Eng.</small>
+                        </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#siteNav" aria-controls="siteNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="siteNav">
+                            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+                                <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                                <li class="nav-item"><a class="nav-link" href="assets/Chirag_Dodiya_Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a></li>
+                            </ul>
                         </div>
-                        <div class="text-center">
-                            <img src="https://dummyimage.com/420x420/0d6efd/ffffff&text=Photo" alt="Portrait placeholder of Chirag Dodiya" class="hero-photo img-fluid" width="420" height="420" />
+                    </div>
+                </nav>
+
+                <!-- Hero -->
+                <div class="site-hero" aria-labelledby="hero-heading">
+                    <div class="container px-5">
+                        <div class="hero-inner">
+                            <div>
+                                <p class="text-muted mb-2 hero-role">Senior Software Engineer</p>
+                                <h1 id="hero-heading" class="hero-title">Chirag Dodiya</h1>
+                                <p class="hero-tagline">I help teams deliver reliable, scalable systems that improve developer productivity and user experience. I build full-stack applications and cloud-native infrastructure using TypeScript, Go, Python, React, and AWS, with an emphasis on observability, automation, and performance.</p>
+                                <div class="hero-ctas d-flex flex-wrap gap-2" role="group" aria-label="Primary call to action">
+                                    <a class="btn btn-primary btn-lg" href="#portfolio">View Work</a>
+                                    <a class="btn btn-primary btn-lg" href="mailto:chirag@example.com">Contact</a>
+                                    <a class="btn btn-link align-self-center ms-2" href="assets/Chirag_Dodiya_Resume.pdf" target="_blank" rel="noopener">Resume <i class="bi bi-box-arrow-up-right"></i></a>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <img src="https://dummyimage.com/420x420/0d6efd/ffffff&text=Photo" alt="Portrait placeholder of Chirag Dodiya" class="hero-photo img-fluid" width="420" height="420" />
+                            </div>
                         </div>
                     </div>
                 </div>
             </header>
 
-            <!-- Featured Projects -->
-            <section id="portfolio" class="py-5" aria-labelledby="portfolio-heading">
-                <div class="container px-5">
-                    <div class="text-center mb-4">
-                        <h2 id="portfolio-heading" class="fw-bolder">Featured Projects</h2>
-                        <p class="text-muted mb-0">Selected projects demonstrating architecture, frontend, backend and cloud work.</p>
-                    </div>
-                    <div class="row gx-4 gy-4 mt-4">
-                        <div class="col-md-6 col-lg-4">
-                            <article class="card project-card h-100 p-3 border-0">
-                                <div class="card-body">
-                                    <h3 class="h5">Realtime Collaboration Platform</h3>
-                                    <ul class="tech-list mt-2">
-                                        <li>TypeScript</li><li>Node.js</li><li>WebSockets</li>
-                                    </ul>
-                                    <p class="text-muted small">Low-latency collaboration with operational transform and persistent sessions.</p>
-                                </div>
-                                <div class="card-footer bg-transparent border-0 d-flex gap-2">
-                                    <a class="btn btn-sm btn-outline-primary" href="#!" aria-label="View demo for Realtime Collaboration Platform">Demo</a>
-                                    <a class="btn btn-sm btn-primary" href="#!" aria-label="View code for Realtime Collaboration Platform">Code</a>
-                                </div>
-                            </article>
+            <main aria-live="polite">
+                <!-- Featured Projects -->
+                <section id="portfolio" class="py-5" aria-labelledby="portfolio-heading" role="region">
+                    <div class="container px-5">
+                        <div class="text-center mb-4">
+                            <h2 id="portfolio-heading" class="fw-bolder">Featured Projects</h2>
+                            <p class="text-muted mb-0">Selected projects demonstrating architecture, frontend, backend and cloud work.</p>
                         </div>
+                        <div class="row gx-4 gy-4 mt-4">
+                            <div class="col-md-6 col-lg-4">
+                                <article class="card project-card h-100 p-3 border-0" aria-labelledby="proj-1-title">
+                                    <a href="portfolio/realtime-collaboration.html" class="d-block mb-3" aria-label="Open project page for Realtime Collaboration Platform">
+                                        <img src="https://dummyimage.com/640x360/0d6efd/ffffff&text=Realtime+Collab" alt="Thumbnail for Realtime Collaboration Platform" class="project-thumb" width="640" height="360" />
+                                    </a>
+                                    <div class="card-body">
+                                        <h3 id="proj-1-title" class="h5"><a href="portfolio/realtime-collaboration.html" class="stretched-link text-reset" rel="noopener">Realtime Collaboration Platform</a></h3>
+                                        <ul class="tech-list mt-2" aria-hidden="true">
+                                            <li>TypeScript</li><li>Node.js</li><li>WebSockets</li>
+                                        </ul>
+                                        <p class="text-muted small">Low-latency collaboration built with operational transforms, persistent sessions, and a focus on real-time UX and reliability.</p>
+                                    </div>
+                                    <div class="card-footer bg-transparent border-0 d-flex gap-2">
+                                        <a class="btn btn-sm btn-primary" href="portfolio/realtime-collaboration.html" aria-label="View project details for Realtime Collaboration Platform">View project</a>
+                                        <a class="btn btn-sm btn-outline-primary" href="#!" aria-label="View source code for Realtime Collaboration Platform (placeholder)">View code</a>
+                                    </div>
+                                </article>
+                            </div>
 
-                        <div class="col-md-6 col-lg-4">
-                            <article class="card project-card h-100 p-3 border-0">
-                                <div class="card-body">
-                                    <h3 class="h5">Serverless Image Pipeline</h3>
-                                    <ul class="tech-list mt-2">
-                                        <li>Go</li><li>AWS Lambda</li><li>S3 & CDN</li>
-                                    </ul>
-                                    <p class="text-muted small">Scalable ingestion and processing pipeline with automated thumbnailing and observability.</p>
-                                </div>
-                                <div class="card-footer bg-transparent border-0 d-flex gap-2">
-                                    <a class="btn btn-sm btn-outline-primary" href="#!" aria-label="View demo for Serverless Image Pipeline">Demo</a>
-                                    <a class="btn btn-sm btn-primary" href="#!" aria-label="View code for Serverless Image Pipeline">Code</a>
-                                </div>
-                            </article>
-                        </div>
+                            <div class="col-md-6 col-lg-4">
+                                <article class="card project-card h-100 p-3 border-0" aria-labelledby="proj-2-title">
+                                    <a href="portfolio/serverless-image-pipeline.html" class="d-block mb-3" aria-label="Open project page for Serverless Image Pipeline">
+                                        <img src="https://dummyimage.com/640x360/0d6efd/ffffff&text=Image+Pipeline" alt="Thumbnail for Serverless Image Pipeline" class="project-thumb" width="640" height="360" />
+                                    </a>
+                                    <div class="card-body">
+                                        <h3 id="proj-2-title" class="h5"><a href="portfolio/serverless-image-pipeline.html" class="stretched-link text-reset" rel="noopener">Serverless Image Pipeline</a></h3>
+                                        <ul class="tech-list mt-2" aria-hidden="true">
+                                            <li>Go</li><li>AWS Lambda</li><li>S3 & CDN</li>
+                                        </ul>
+                                        <p class="text-muted small">Scalable ingestion and processing pipeline with automated thumbnailing, caching, and observability for high-throughput workloads.</p>
+                                    </div>
+                                    <div class="card-footer bg-transparent border-0 d-flex gap-2">
+                                        <a class="btn btn-sm btn-primary" href="portfolio/serverless-image-pipeline.html" aria-label="View project details for Serverless Image Pipeline">View project</a>
+                                        <a class="btn btn-sm btn-outline-primary" href="#!" aria-label="View source code for Serverless Image Pipeline (placeholder)">View code</a>
+                                    </div>
+                                </article>
+                            </div>
 
-                        <div class="col-md-6 col-lg-4">
-                            <article class="card project-card h-100 p-3 border-0">
-                                <div class="card-body">
-                                    <h3 class="h5">Internal DevOps Toolkit</h3>
-                                    <ul class="tech-list mt-2">
-                                        <li>Python</li><li>Terraform</li><li>CI/CD</li>
-                                    </ul>
-                                    <p class="text-muted small">Infrastructure as code, reusable modules, and safe deployment patterns for teams.</p>
-                                </div>
-                                <div class="card-footer bg-transparent border-0 d-flex gap-2">
-                                    <a class="btn btn-sm btn-outline-primary" href="#!" aria-label="View demo for DevOps Toolkit">Demo</a>
-                                    <a class="btn btn-sm btn-primary" href="#!" aria-label="View code for DevOps Toolkit">Code</a>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Skills -->
-            <section id="skills" class="py-5 bg-light" aria-labelledby="skills-heading">
-                <div class="container px-5">
-                    <div class="text-center mb-4">
-                        <h2 id="skills-heading" class="fw-bolder">Skills</h2>
-                        <p class="text-muted mb-0">Practical experience across languages, frameworks, cloud platforms and tools.</p>
-                    </div>
-
-                    <div class="skills-grid mt-4">
-                        <div class="skill-category">
-                            <h3 class="h6 mb-2">Languages</h3>
-                            <div><span class="skill-tag">TypeScript</span><span class="skill-tag">Go</span><span class="skill-tag">Python</span><span class="skill-tag">SQL</span></div>
-                        </div>
-                        <div class="skill-category">
-                            <h3 class="h6 mb-2">Frameworks</h3>
-                            <div><span class="skill-tag">React</span><span class="skill-tag">Next.js</span><span class="skill-tag">Express</span><span class="skill-tag">Gin</span></div>
-                        </div>
-                        <div class="skill-category">
-                            <h3 class="h6 mb-2">Cloud & Infra</h3>
-                            <div><span class="skill-tag">AWS</span><span class="skill-tag">Terraform</span><span class="skill-tag">Kubernetes</span><span class="skill-tag">Serverless</span></div>
-                        </div>
-                        <div class="skill-category">
-                            <h3 class="h6 mb-2">Tools</h3>
-                            <div><span class="skill-tag">Docker</span><span class="skill-tag">GitHub Actions</span><span class="skill-tag">Prometheus</span><span class="skill-tag">Jest</span></div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- About blurb -->
-            <section id="about-blurb" class="py-5" aria-labelledby="about-heading">
-                <div class="container px-5">
-                    <div class="row gx-5 align-items-center">
-                        <div class="col-lg-8">
-                            <h2 id="about-heading" class="fw-bolder">About</h2>
-                            <p class="text-muted">I'm a Senior Software Engineer focused on designing resilient systems that scale. I enjoy lifting complex problems into clear designs and shipping reliable software. For a deeper background, visit the full <a href="about.html">About page</a>.</p>
-                        </div>
-                        <div class="col-lg-4 text-lg-end">
-                            <a class="btn btn-outline-secondary" href="about.html">Learn more</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Testimonials placeholder -->
-            <section id="testimonials" class="py-5 bg-white" aria-labelledby="testimonials-heading">
-                <div class="container px-5">
-                    <div class="text-center mb-4">
-                        <h2 id="testimonials-heading" class="fw-bolder">Testimonials</h2>
-                        <p class="text-muted mb-0">What people say — coming soon.</p>
-                    </div>
-                    <div class="row gx-4 justify-content-center">
-                        <div class="col-lg-8">
-                            <div class="testimonial-placeholder">
-                                <p class="mb-0 fst-italic text-muted">"Client testimonials and case studies will appear here shortly."</p>
-                                <div class="small text-muted mt-3">If you'd like to share feedback, please <a href="mailto:chirag@example.com">email me</a>.</div>
+                            <div class="col-md-6 col-lg-4">
+                                <article class="card project-card h-100 p-3 border-0" aria-labelledby="proj-3-title">
+                                    <a href="portfolio/devops-toolkit.html" class="d-block mb-3" aria-label="Open project page for Internal DevOps Toolkit">
+                                        <img src="https://dummyimage.com/640x360/0d6efd/ffffff&text=DevOps+Toolkit" alt="Thumbnail for Internal DevOps Toolkit" class="project-thumb" width="640" height="360" />
+                                    </a>
+                                    <div class="card-body">
+                                        <h3 id="proj-3-title" class="h5"><a href="portfolio/devops-toolkit.html" class="stretched-link text-reset" rel="noopener">Internal DevOps Toolkit</a></h3>
+                                        <ul class="tech-list mt-2" aria-hidden="true">
+                                            <li>Python</li><li>Terraform</li><li>CI/CD</li>
+                                        </ul>
+                                        <p class="text-muted small">Reusable infrastructure modules and deployment patterns that reduce toil and increase platform reliability for engineering teams.</p>
+                                    </div>
+                                    <div class="card-footer bg-transparent border-0 d-flex gap-2">
+                                        <a class="btn btn-sm btn-primary" href="portfolio/devops-toolkit.html" aria-label="View project details for Internal DevOps Toolkit">View project</a>
+                                        <a class="btn btn-sm btn-outline-primary" href="#!" aria-label="View source code for Internal DevOps Toolkit (placeholder)">View code</a>
+                                    </div>
+                                </article>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            <!-- Contact CTA and Form (includes Panda mount point for existing integration) -->
-            <section id="contact" class="py-5 bg-light" aria-labelledby="contact-heading">
-                <div class="container px-5">
-                    <h2 id="contact-heading" class="fw-bolder text-center mb-3">Contact</h2>
-                    <p class="text-center text-muted mb-4">Available for freelance and full-time opportunities. Let's build something great.</p>
-
-                    <div class="contact-cta mb-4">
-                        <div>
-                            <strong>Ready to start a project?</strong>
-                            <div class="text-muted">Email me or use the form below and I'll respond within 48 hours.</div>
+                <!-- Compact Skills / Tech Stack -->
+                <section id="skills" class="py-4 bg-light" aria-labelledby="skills-heading" role="region">
+                    <div class="container px-5">
+                        <div class="text-center mb-3">
+                            <h2 id="skills-heading" class="fw-bolder">Tech Stack</h2>
+                            <p class="text-muted mb-2">Core tools and technologies I use to deliver production systems.</p>
                         </div>
-                        <div class="d-flex gap-2">
-                            <a class="btn btn-primary" href="mailto:chirag@example.com">Email: chirag@example.com</a>
-                            <a class="btn btn-outline-primary" href="#contact-form">Open form</a>
+
+                        <div class="skills-row" role="list" aria-label="Technology skills">
+                            <span class="skill-pill" role="listitem">TypeScript</span>
+                            <span class="skill-pill" role="listitem">React</span>
+                            <span class="skill-pill" role="listitem">Node.js</span>
+                            <span class="skill-pill" role="listitem">Go</span>
+                            <span class="skill-pill" role="listitem">Python</span>
+                            <span class="skill-pill" role="listitem">AWS</span>
+                            <span class="skill-pill" role="listitem">Terraform</span>
+                            <span class="skill-pill" role="listitem">Kubernetes</span>
+                            <span class="skill-pill" role="listitem">Docker</span>
+                            <span class="skill-pill" role="listitem">CI/CD</span>
                         </div>
                     </div>
+                </section>
 
-                    <div id="contact-form" class="bg-white p-4 rounded-3 shadow-sm">
-                        <div class="row">
+                <!-- About blurb -->
+                <section id="about-blurb" class="py-5" aria-labelledby="about-heading" role="region">
+                    <div class="container px-5">
+                        <div class="row gx-5 align-items-center">
                             <div class="col-lg-8">
-                                <!-- PANDA CONTACT FORM mount point preserved for integration -->
-                                <div
-                                  data-panda-contact
-                                  data-endpoint="https://bfwqdadlcyndtaqmqtci.supabase.co/functions/v1/panda-contact"
-                                  data-to-email="contact@yourdomain.com"
-                                  data-success="Thanks! We’ll get back to you shortly."
-                                ></div>
-
-                                <!-- Fallback simple contact form (non-breaking for environments without Panda) -->
-                                <noscript>
-                                    <form action="mailto:chirag@example.com" method="post" enctype="text/plain" aria-label="Contact fallback form">
-                                        <div class="mb-3">
-                                            <label class="form-label">Name</label>
-                                            <input class="form-control" type="text" name="name" required />
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label">Email</label>
-                                            <input class="form-control" type="email" name="email" required />
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label">Message</label>
-                                            <textarea class="form-control" name="message" rows="4" required></textarea>
-                                        </div>
-                                        <button class="btn btn-primary" type="submit">Send</button>
-                                    </form>
-                                </noscript>
+                                <h2 id="about-heading" class="fw-bolder">About</h2>
+                                <p class="text-muted">I'm a Senior Software Engineer focused on designing resilient systems that scale. I enjoy lifting complex problems into clear designs and shipping reliable software. For a deeper background, visit the full <a href="about.html">About page</a>.</p>
                             </div>
-
-                            <aside class="col-lg-4">
-                                <div class="small text-muted mb-2">Prefer other channels?</div>
-                                <ul class="list-unstyled">
-                                    <li class="mb-2"><i class="bi bi-envelope me-2"></i><a href="mailto:chirag@example.com">chirag@example.com</a></li>
-                                    <li class="mb-2"><i class="bi bi-linkedin me-2"></i><a href="#!" target="_blank" rel="noopener">LinkedIn</a></li>
-                                    <li class="mb-2"><i class="bi bi-github me-2"></i><a href="#!" target="_blank" rel="noopener">GitHub</a></li>
-                                </ul>
-                            </aside>
+                            <div class="col-lg-4 text-lg-end">
+                                <a class="btn btn-outline-secondary" href="about.html">Learn more</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+
+                <!-- Testimonials placeholder -->
+                <section id="testimonials" class="py-5 bg-white" aria-labelledby="testimonials-heading" role="region">
+                    <div class="container px-5">
+                        <div class="text-center mb-4">
+                            <h2 id="testimonials-heading" class="fw-bolder">Testimonials</h2>
+                            <p class="text-muted mb-0">What people say — coming soon.</p>
+                        </div>
+                        <div class="row gx-4 justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="testimonial-placeholder">
+                                    <p class="mb-0 fst-italic text-muted">"Client testimonials and case studies will appear here shortly."</p>
+                                    <div class="small text-muted mt-3">If you'd like to share feedback, please <a href="mailto:chirag@example.com">email me</a>.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Contact CTA and Form (includes Panda mount point for existing integration) -->
+                <section id="contact" class="py-5 bg-light" aria-labelledby="contact-heading" role="region">
+                    <div class="container px-5">
+                        <h2 id="contact-heading" class="fw-bolder text-center mb-3">Contact</h2>
+                        <p class="text-center text-muted mb-4">Available for freelance and full-time opportunities. Let's build something great.</p>
+
+                        <div class="contact-cta mb-4" role="group" aria-label="Contact call to action">
+                            <div>
+                                <strong>Ready to start a project?</strong>
+                                <div class="text-muted">Email me or use the form below and I'll respond within 48 hours.</div>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <a class="btn btn-primary" href="mailto:chirag@example.com">Email: chirag@example.com</a>
+                                <a class="btn btn-outline-primary" href="#contact-form">Open form</a>
+                            </div>
+                        </div>
+
+                        <div id="contact-form" class="bg-white p-4 rounded-3 shadow-sm">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <!-- PANDA CONTACT FORM mount point preserved for integration -->
+                                    <div
+                                      data-panda-contact
+                                      data-endpoint="https://bfwqdadlcyndtaqmqtci.supabase.co/functions/v1/panda-contact"
+                                      data-to-email="contact@yourdomain.com"
+                                      data-success="Thanks! We’ll get back to you shortly."
+                                    ></div>
+
+                                    <!-- Fallback simple contact form (non-breaking for environments without Panda) -->
+                                    <noscript>
+                                        <form action="mailto:chirag@example.com" method="post" enctype="text/plain" aria-label="Contact fallback form">
+                                            <div class="mb-3">
+                                                <label class="form-label">Name</label>
+                                                <input class="form-control" type="text" name="name" required />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Email</label>
+                                                <input class="form-control" type="email" name="email" required />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Message</label>
+                                                <textarea class="form-control" name="message" rows="4" required></textarea>
+                                            </div>
+                                            <button class="btn btn-primary" type="submit">Send</button>
+                                        </form>
+                                    </noscript>
+                                </div>
+
+                                <aside class="col-lg-4">
+                                    <div class="small text-muted mb-2">Prefer other channels?</div>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2"><i class="bi bi-envelope me-2"></i><a href="mailto:chirag@example.com">chirag@example.com</a></li>
+                                        <li class="mb-2"><i class="bi bi-linkedin me-2"></i><a href="#!" target="_blank" rel="noopener">LinkedIn profile (placeholder)</a></li>
+                                        <li class="mb-2"><i class="bi bi-github me-2"></i><a href="#!" target="_blank" rel="noopener">GitHub profile (placeholder)</a></li>
+                                    </ul>
+                                </aside>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
         </main>
 
         <!-- Semantic footer with social and resume link -->
