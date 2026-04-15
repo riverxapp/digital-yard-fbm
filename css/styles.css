@@ -3,7 +3,7 @@
 
 /* New design tokens and type scale */
 :root {
-  /* Color palette */
+  /* Color palette (semantic and alias tokens for clarity) */
   --brand-primary: #0d6efd;            /* bright blue for primary actions */
   --brand-accent: #7c5cff;             /* accent/purple for highlights */
   --surface: #ffffff;                  /* page surface */
@@ -11,6 +11,13 @@
   --text-primary-ui: #0f1724;          /* high-contrast primary text */
   --text-muted-ui: #5b6470;            /* secondary text */
   --border-subtle: rgba(15, 23, 36, 0.06);
+
+  /* Aliases for generic design-system usage */
+  --color-primary: var(--brand-primary);
+  --color-accent: var(--brand-accent);
+  --color-neutral: #94a3b8;
+  --color-bg: var(--surface);
+  --color-text: var(--text-primary-ui);
 
   /* Semantic colors */
   --success-ui: #198754;
@@ -20,21 +27,25 @@
   --elevation-1: 0 6px 18px rgba(15, 23, 36, 0.06);
   --elevation-2: 0 14px 40px rgba(15, 23, 36, 0.10);
 
-  /* Radius and spacing scale */
+  /* Radius and spacing scale (tokenized) */
   --radius-sm: 6px;
   --radius-md: 12px;
   --radius-lg: 18px;
+  --space-0: 0;
   --space-1: 0.5rem;
   --space-2: 1rem;
   --space-3: 1.5rem;
   --space-4: 2.5rem;
+  --gutter: calc(var(--space-2) / 2);
 
-  /* Type scale */
+  /* Type scale (mobile-first, scalable with clamp where used) */
+  --type-scale-ratio: 1.25;
   --type-h1: 2.25rem;
   --type-h2: 1.75rem;
   --type-h3: 1.375rem;
   --type-body: 1rem;
   --type-small: 0.875rem;
+  --leading: 1.6;
 
   /* Font stack */
   --font-system: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -44,6 +55,10 @@
 
   /* Projects grid breakpoints */
   --grid-gap: 1rem;
+
+  /* Container widths */
+  --container-max: 1100px;
+  --container-padding: var(--space-2);
 }
 
 /* Apply system font and improved base colors while preserving Bootstrap variables */
@@ -56,77 +71,116 @@ body {
   background-color: var(--surface);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  line-height: 1.6;
+  line-height: var(--leading);
+  font-size: var(--type-body);
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Top navigation - sticky, clean, subtle blur */
-.top-nav {
-  position: sticky;
-  top: 0;
-  z-index: 1080;
-  background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.92));
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border-bottom: 1px solid var(--border-subtle);
-  transition: box-shadow 180ms ease, background-color 180ms ease;
-  box-shadow: none;
-}
-.top-nav.is-elevated {
-  box-shadow: var(--elevation-1);
-}
-
-.top-nav .navbar-brand {
-  font-weight: 600;
-  color: var(--brand-primary);
-  letter-spacing: -0.01em;
-}
-.top-nav .nav-link {
-  color: var(--text-muted-ui);
-  padding: 0.6rem 0.9rem;
-  border-radius: 8px;
-  transition: color 150ms ease, background-color 150ms ease, transform 150ms ease;
-  font-weight: 500;
-}
-.top-nav .nav-link:hover,
-.top-nav .nav-link:focus {
-  color: var(--text-primary-ui);
-  background-color: rgba(13,110,253,0.06);
-  text-decoration: none;
-}
-
-/* Hero: split layout with clear CTAs */
-.hero {
-  padding: var(--space-4) var(--space-2);
-  background-color: var(--muted-surface);
-  margin-bottom: var(--space-4);
-  display: grid;
-  gap: var(--space-3);
-}
-.hero .hero-inner {
-  max-width: 1100px;
-  margin-right: auto;
-  margin-left: auto;
+/* Utility: centered container with horizontal padding */
+.container {
   width: 100%;
-}
-.hero .hero-split {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-3);
-  align-items: center;
-}
-.hero h1 {
-  font-size: clamp(1.6rem, 1.1rem + 3.2vw, var(--type-h1));
-  line-height: 1.08;
-  margin-bottom: 0.5rem;
-  color: var(--text-primary-ui);
-}
-.hero p.lead {
-  font-size: 1.125rem;
-  color: var(--text-muted-ui);
-  max-width: 48ch;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--container-max);
+  box-sizing: border-box;
 }
 
-/* Call-to-action buttons */
+/* Simple responsive row/column helpers (flexbox grid) */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: calc(var(--gutter) * -1);
+  margin-right: calc(var(--gutter) * -1);
+}
+.col {
+  flex: 1 1 0%;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+  min-width: 0;
+}
+.col-auto {
+  flex: 0 0 auto;
+}
+.col-6 {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+/* Spacing utilities (kept intentionally small and predictable) */
+.m-0 { margin: 0 !important; }
+.mt-1 { margin-top: var(--space-1) !important; }
+.mt-2 { margin-top: var(--space-2) !important; }
+.mb-1 { margin-bottom: var(--space-1) !important; }
+.mb-2 { margin-bottom: var(--space-2) !important; }
+.p-0 { padding: 0 !important; }
+.p-1 { padding: var(--space-1) !important; }
+.p-2 { padding: var(--space-2) !important; }
+.px-2 { padding-left: var(--space-2) !important; padding-right: var(--space-2) !important; }
+.py-2 { padding-top: var(--space-2) !important; padding-bottom: var(--space-2) !important; }
+
+/* Screen-reader only helper (preserved) */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Buttons: base and variants (lightweight, accessible) */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 0.5rem 0.9rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+  text-decoration: none;
+  color: var(--color-text);
+  background: transparent;
+  transition: transform 150ms ease, box-shadow 150ms ease, background-color 120ms ease, color 120ms ease;
+  vertical-align: middle;
+  line-height: 1;
+}
+.btn:focus-visible,
+.btn:focus {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+.btn-primary,
+.btn--primary {
+  background-color: var(--color-primary);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 6px 18px rgba(13, 110, 253, 0.12);
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(13, 110, 253, 0.16);
+}
+.btn-outline {
+  background: transparent;
+  border: 1px solid rgba(15,23,36,0.06);
+  color: var(--color-text);
+}
+.btn:disabled,
+button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Keep existing CTA classes (extendable) */
 .btn-cta {
   display: inline-flex;
   align-items: center;
@@ -159,7 +213,75 @@ body {
   transform: translateY(-2px);
 }
 
-/* Hero image / visual placeholder */
+/* Top navigation - sticky, clean, subtle blur (preserved and extended) */
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1080;
+  background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.92));
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--border-subtle);
+  transition: box-shadow 180ms ease, background-color 180ms ease;
+  box-shadow: none;
+  padding: 0.5rem var(--space-2);
+}
+.top-nav.is-elevated {
+  box-shadow: var(--elevation-1);
+}
+.top-nav .navbar-brand {
+  font-weight: 600;
+  color: var(--brand-primary);
+  letter-spacing: -0.01em;
+  font-size: 1.025rem;
+}
+.top-nav .nav-link {
+  color: var(--text-muted-ui);
+  padding: 0.6rem 0.9rem;
+  border-radius: 8px;
+  transition: color 150ms ease, background-color 150ms ease, transform 150ms ease;
+  font-weight: 500;
+}
+.top-nav .nav-link:hover,
+.top-nav .nav-link:focus {
+  color: var(--text-primary-ui);
+  background-color: rgba(13,110,253,0.06);
+  text-decoration: none;
+}
+
+/* Hero: split layout with clear CTAs (preserved) */
+.hero {
+  padding: var(--space-4) var(--space-2);
+  background-color: var(--muted-surface);
+  margin-bottom: var(--space-4);
+  display: grid;
+  gap: var(--space-3);
+}
+.hero .hero-inner {
+  max-width: var(--container-max);
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+}
+.hero .hero-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+  align-items: center;
+}
+.hero h1 {
+  font-size: clamp(1.6rem, 1.1rem + 3.2vw, var(--type-h1));
+  line-height: 1.08;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary-ui);
+}
+.hero p.lead {
+  font-size: 1.125rem;
+  color: var(--text-muted-ui);
+  max-width: 48ch;
+}
+
+/* Hero image / visual placeholder (preserved) */
 .hero-visual {
   width: 100%;
   border-radius: var(--radius-md);
@@ -173,7 +295,7 @@ body {
   font-weight: 600;
 }
 
-/* Projects grid: responsive, accessible layout */
+/* Projects grid: responsive, accessible layout (kept, with slight utility alias) */
 .projects-grid {
   display: grid;
   gap: var(--grid-gap);
@@ -181,6 +303,12 @@ body {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+.grid-projects {
+  /* alias for projects-grid used in templates */
+  display: grid;
+  gap: var(--grid-gap);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
 /* Project card extends Bootstrap .card but with elevated modern style */
@@ -194,6 +322,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100%;
+  color: var(--color-text);
 }
 .project-card.card:focus-within,
 .project-card.card:hover {
@@ -293,19 +422,6 @@ button:focus-visible,
   box-shadow: var(--elevation-2), var(--focus-ring);
 }
 
-/* Small helpers for accessible hidden text used with icons */
-.sr-only {
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  padding: 0 !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  clip: rect(0, 0, 0, 0) !important;
-  white-space: nowrap !important;
-  border: 0 !important;
-}
-
 /* Footer */
 .site-footer {
   background: #0f1724;
@@ -341,6 +457,8 @@ button:focus-visible,
   .projects-grid {
     gap: calc(var(--grid-gap) * 1.1);
   }
+  /* container padding increases on tablet */
+  .container { padding-left: calc(var(--container-padding) + 0.5rem); padding-right: calc(var(--container-padding) + 0.5rem); }
 }
 
 /* Desktop */
@@ -363,6 +481,7 @@ button:focus-visible,
     grid-auto-rows: 1fr;
     gap: calc(var(--grid-gap) * 1.25);
   }
+  .container { max-width: 1200px; }
 }
 
 /* Utility to visually emphasize CTA group in hero */
@@ -401,4 +520,25 @@ button {
   padding: var(--space-3);
 }
 
+/* Accessibility: ensure focusable elements have visible, high-contrast outlines */
+:focus {
+  outline: none;
+}
+a:focus,
+button:focus,
+input:focus,
+textarea:focus {
+  box-shadow: var(--focus-ring);
+  border-radius: 8px;
+}
+
+/* Small utilities for text and headings */
+.h1 {
+  font-size: clamp(1.6rem, 1.1rem + 3.2vw, var(--type-h1));
+  line-height: 1.08;
+}
+.h2 { font-size: var(--type-h2); line-height: 1.12; }
+.lead { font-size: 1.0625rem; color: var(--text-muted-ui); }
+
+/* Keep file size maintainable: minimal, focused utilities only */
 /* End of custom design system additions */
