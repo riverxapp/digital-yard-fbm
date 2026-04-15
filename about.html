@@ -45,65 +45,139 @@
                     </div>
                 </div>
             </nav>
-            <!-- Header-->
-            <header class="py-5">
+
+            <!-- Header / Hero -->
+            <header class="py-5 bg-light">
                 <div class="container px-5">
                     <div class="row justify-content-center">
-                        <div class="col-lg-8 col-xxl-6">
+                        <div class="col-lg-10 col-xxl-8">
                             <div class="text-center my-5">
                                 <h1 class="fw-bolder mb-3">About Chirag Dodiya</h1>
-                                <p class="lead fw-normal text-muted mb-4">Senior Software Engineer — building reliable, scalable web services and delightful user experiences.</p>
-                                <a class="btn btn-primary btn-lg" href="#bio">Learn more</a>
+                                <p class="lead fw-normal text-muted mb-4">Senior Software Engineer focused on building reliable, scalable systems and leading teams to deliver measurable outcomes.</p>
+                                <a class="btn btn-primary btn-lg me-2" href="#bio">Learn more</a>
+                                <a class="btn btn-outline-primary btn-lg" href="index.html#contact">Contact</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </header>
 
-            <!-- Bio section-->
-            <section id="bio" class="py-5 bg-light">
+            <!-- Main content -->
+            <section id="bio" class="py-5">
                 <div class="container px-5 my-5">
                     <div class="row gx-5 align-items-center">
                         <div class="col-lg-5 text-center mb-4 mb-lg-0">
-                            <img class="img-fluid rounded mb-3" src="https://dummyimage.com/400x400/343a40/6c757d" alt="Chirag Dodiya profile" />
+                            <img class="img-fluid rounded mb-3" src="https://dummyimage.com/400x400/343a40/6c757d" alt="Portrait of Chirag Dodiya" />
                             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                                <a class="btn btn-outline-primary" href="assets/Chirag-Dodiya-Resume.pdf" download>Download Resume</a>
-                                <a class="btn btn-outline-secondary" href="portfolio-overview.html">View Portfolio</a>
+                                <a class="btn btn-primary" href="assets/resume-placeholder.pdf" download aria-label="Download Chirag Dodiya resume">Download Resume</a>
+                                <a class="btn btn-outline-secondary" href="index.html#contact" aria-label="Contact Chirag Dodiya">Contact</a>
                             </div>
                         </div>
                         <div class="col-lg-7">
-                            <h2 class="fw-bolder mb-2">Chirag Dodiya</h2>
-                            <div class="mb-3 fst-italic text-muted">Senior Software Engineer</div>
-                            <p class="lead fw-normal text-muted">Chirag is a Senior Software Engineer with 8+ years of experience designing and delivering production-grade web and cloud-native applications. He specializes in building scalable backend services, performant front-end interfaces, and reliable CI/CD pipelines. He enjoys mentoring engineers, improving delivery practices, and solving hard architecture problems.</p>
-                            <p class="mb-0"><strong>Primary focus:</strong> Distributed systems, backend engineering (API design, microservices), frontend engineering (React, modern JavaScript), and cloud platforms (AWS, Kubernetes).</p>
+                            <h2 class="fw-bolder mb-2">Biography</h2>
+                            <p class="text-muted mb-3">Chirag Dodiya is a senior software engineer with over eight years of experience delivering production-grade web and cloud-native applications. He focuses on designing robust backend services and intuitive front-end experiences that scale.</p>
+                            <p class="text-muted mb-3">He has led cross-functional teams to launch high-throughput systems, improve reliability, and reduce operational costs through careful architecture, automation, and observability practices.</p>
+                            <p class="text-muted mb-3">Chirag prioritizes impact: mentoring engineers, driving engineering best practices, and aligning technical decisions with business outcomes to accelerate delivery and improve user satisfaction.</p>
+                            <p class="mb-0 text-muted"><strong>Primary focus:</strong> Distributed systems, API design, cloud platforms (AWS, Kubernetes), and modern front-end development.</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Experience & strengths section-->
-            <section class="py-5">
+            <!-- Experience timeline -->
+            <section id="experience" class="py-5 bg-light">
                 <div class="container px-5 my-5">
+                    <h2 class="fw-bolder mb-4">Experience</h2>
+                    <ul class="list-unstyled">
+                        <li class="mb-4">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h3 class="h5 mb-1">Senior Software Engineer</h3>
+                                    <div class="text-muted">Acme Corp</div>
+                                </div>
+                                <div class="text-muted">2021 — Present</div>
+                            </div>
+                            <p class="mb-0 text-muted">Led a team building microservices for a high-traffic product, improving latency and reliability while mentoring junior engineers.</p>
+                        </li>
+                        <li class="mb-4">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h3 class="h5 mb-1">Software Engineer</h3>
+                                    <div class="text-muted">Beta Systems</div>
+                                </div>
+                                <div class="text-muted">2018 — 2021</div>
+                            </div>
+                            <p class="mb-0 text-muted">Designed APIs and batch processing pipelines to handle large-scale data with strong focus on testability and observability.</p>
+                        </li>
+                        <li class="mb-4">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h3 class="h5 mb-1">Full-Stack Engineer</h3>
+                                    <div class="text-muted">Startup XYZ</div>
+                                </div>
+                                <div class="text-muted">2016 — 2018</div>
+                            </div>
+                            <p class="mb-0 text-muted">Built end-to-end features from UI to backend, iterating quickly to validate product-market fit and scale user growth.</p>
+                        </li>
+                        <li>
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h3 class="h5 mb-1">Role Placeholder</h3>
+                                    <div class="text-muted">Company Name</div>
+                                </div>
+                                <div class="text-muted">Dates</div>
+                            </div>
+                            <p class="mb-0 text-muted">Additional experience or earlier roles can be listed here as needed.</p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Skills -->
+            <section id="skills" class="py-5">
+                <div class="container px-5 my-5">
+                    <h2 class="fw-bolder mb-4">Skills & Proficiency</h2>
                     <div class="row gx-5">
-                        <div class="col-lg-6">
-                            <h3 class="fw-bolder">Experience Summary</h3>
-                            <ul class="list-unstyled text-muted">
-                                <li class="mb-2">8+ years in full-stack and backend engineering across startups and enterprise teams.</li>
-                                <li class="mb-2">Led development of high-throughput services serving millions of requests per day.</li>
-                                <li class="mb-2">Designed and migrated services to cloud-native infrastructure using Kubernetes and managed cloud services.</li>
-                                <li class="mb-2">Built observable, testable systems with strong emphasis on reliability and performance.</li>
-                            </ul>
+                        <div class="col-md-6 mb-4">
+                            <div class="mb-2 d-flex justify-content-between">
+                                <div class="fw-bold">Backend Engineering</div>
+                                <div class="text-muted">90%</div>
+                            </div>
+                            <div class="progress" style="height: 10px;" role="progressbar" aria-label="Backend Engineering proficiency" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar bg-primary" style="width: 90%;"></div>
+                            </div>
                         </div>
-                        <div class="col-lg-6">
-                            <h3 class="fw-bolder">Core Strengths</h3>
-                            <ul class="list-unstyled">
-                                <li class="mb-2"><span class="fw-bold">System Design:</span> Scalable architecture, service boundaries, event-driven patterns.</li>
-                                <li class="mb-2"><span class="fw-bold">Backend:</span> APIs, microservices, performance tuning (Java/Python/Node).</li>
-                                <li class="mb-2"><span class="fw-bold">Frontend:</span> Modern JS, React, component-driven design and UX considerations.</li>
-                                <li class="mb-2"><span class="fw-bold">Cloud & DevOps:</span> Kubernetes, AWS, CI/CD, observability (Prometheus, ELK).</li>
-                                <li class="mb-2"><span class="fw-bold">Leadership:</span> Mentorship, code reviews, cross-functional collaboration.</li>
-                            </ul>
+                        <div class="col-md-6 mb-4">
+                            <div class="mb-2 d-flex justify-content-between">
+                                <div class="fw-bold">System Design</div>
+                                <div class="text-muted">85%</div>
+                            </div>
+                            <div class="progress" style="height: 10px;" role="progressbar" aria-label="System Design proficiency" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar bg-primary" style="width: 85%;"></div>
+                            </div>
                         </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="mb-2 d-flex justify-content-between">
+                                <div class="fw-bold">Cloud & DevOps</div>
+                                <div class="text-muted">80%</div>
+                            </div>
+                            <div class="progress" style="height: 10px;" role="progressbar" aria-label="Cloud and DevOps proficiency" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar bg-primary" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="mb-2 d-flex justify-content-between">
+                                <div class="fw-bold">Frontend (React)</div>
+                                <div class="text-muted">75%</div>
+                            </div>
+                            <div class="progress" style="height: 10px;" role="progressbar" aria-label="Frontend proficiency" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar bg-primary" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <a class="btn btn-outline-primary" href="assets/resume-placeholder.pdf" download aria-label="Download resume">Download Full Resume</a>
+                        <a class="btn btn-primary ms-2" href="index.html#contact" aria-label="Contact via website">Get in touch</a>
                     </div>
                 </div>
             </section>
